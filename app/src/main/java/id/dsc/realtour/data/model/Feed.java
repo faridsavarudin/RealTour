@@ -1,27 +1,84 @@
 package id.dsc.realtour.data.model;
 
-public class Feed {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.List;
+
+
+public class Feed implements Parcelable {
     private String caption;
+    private List<ParentContentJava> parentContent;
     private String companyLogo;
     private String companyName;
     private String containerType;
     private String mediaValue;
-    private String title;
     private String price;
     private String companyID;
 
-    public Feed(String caption, String companyLogo, String companyName, String containerType, String mediaValue, String title, String price, String companyID) {
+
+
+    public Feed(String caption, List<id.dsc.realtour.data.model.ParentContentJava> ParentContent,
+                String companyLogo, String companyName, String containerType, String mediaValue, String price, String companyID) {
         this.caption = caption;
+        this.parentContent = ParentContent;
         this.companyLogo = companyLogo;
         this.companyName = companyName;
         this.containerType = containerType;
         this.mediaValue = mediaValue;
-        this.title = title;
         this.price = price;
         this.companyID = companyID;
     }
 
     public Feed() {
+    }
+
+    protected Feed(Parcel in) {
+        caption = in.readString();
+        companyLogo = in.readString();
+        companyName = in.readString();
+        containerType = in.readString();
+        mediaValue = in.readString();
+        price = in.readString();
+        companyID = in.readString();
+        parentContent = in.createTypedArrayList(ParentContentJava.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(caption);
+        dest.writeString(companyLogo);
+        dest.writeString(companyName);
+        dest.writeString(containerType);
+        dest.writeString(mediaValue);
+        dest.writeString(price);
+        dest.writeString(companyID);
+        dest.writeTypedList(parentContent);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Feed> CREATOR = new Creator<Feed>() {
+        @Override
+        public Feed createFromParcel(Parcel in) {
+            return new Feed(in);
+        }
+
+        @Override
+        public Feed[] newArray(int size) {
+            return new Feed[size];
+        }
+    };
+
+    public List<id.dsc.realtour.data.model.ParentContentJava> getParentContent() {
+        return parentContent;
+    }
+
+    public void setParentContent(List<id.dsc.realtour.data.model.ParentContentJava> parentContent) {
+        this.parentContent = parentContent;
     }
 
     public String getCaption() {
@@ -81,11 +138,4 @@ public class Feed {
         this.mediaValue = mediaValue;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

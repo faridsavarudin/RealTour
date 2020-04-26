@@ -12,15 +12,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import id.dsc.realtour.R
 import id.dsc.realtour.data.model.Feed
 import id.dsc.realtour.ui.preview.PreviewActivity
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -48,7 +45,6 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         initView()
-        initFirebaseStorage()
         initFireStore()
     }
 
@@ -91,12 +87,15 @@ class HomeFragment : Fragment() {
                     it.adapter = adapter
                 }
                 progress?.visibility=View.GONE
+
+                for (datas in listFeeds){
+                    for (da in datas?.parentContent){
+                    }
+
+                }
             }
     }
 
-    private fun initFirebaseStorage() {
-        val imagesRef = storageRef.child("images")
-    }
 
     private fun showFABMenu() {
         isFABOpen = true

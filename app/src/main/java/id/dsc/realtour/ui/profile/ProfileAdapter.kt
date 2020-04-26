@@ -31,7 +31,6 @@ RecyclerView.Adapter<ProfileAdapter.MyViewHolder>(){
     inner class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(data: Feed) {
             view.apply {
-                tv_title.text = data.title
                 if (data.containerType=="image"){
                     iv_image.visibility = View.VISIBLE
                     vr_panorama.visibility = View.GONE

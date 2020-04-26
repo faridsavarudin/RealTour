@@ -20,6 +20,8 @@ import id.dsc.realtour.MainActivity
 import id.dsc.realtour.R
 import id.dsc.realtour.data.model.Company
 import id.dsc.realtour.data.model.Feed
+import id.dsc.realtour.data.model.ParentContent
+import id.dsc.realtour.data.model.ParentContentJava
 import id.dsc.realtour.ui.BaseActivity
 import id.dsc.realtour.ui.home.HomeFragment
 import id.dsc.realtour.utils.Cons
@@ -44,11 +46,11 @@ class PreviewActivity : BaseActivity() {
         filePath = Uri.parse(data)
 
         if (isUploadImage) {
+            et_title.visibility=View.GONE
             iv_preview.setImageURI(filePath)
         } else {
             iv_preview.visibility = View.GONE
             pano_view.visibility = View.VISIBLE
-
             pano_view.setInfoButtonEnabled(false)
             pano_view.isClickable = true
             pano_view.setTouchTrackingEnabled(true)
@@ -56,7 +58,6 @@ class PreviewActivity : BaseActivity() {
             pano_view.setFullscreenButtonEnabled(false)
             panoOptions = VrPanoramaView.Options()
             panoOptions!!.inputType = VrPanoramaView.Options.TYPE_MONO
-            Log.e("halooo", data)
             Glide.with(this).asBitmap()
                 .load(data).into(object : CustomTarget<Bitmap>() {
                     override fun onLoadCleared(placeholder: Drawable?) {
@@ -93,18 +94,22 @@ class PreviewActivity : BaseActivity() {
             if (task.isSuccessful) {
                 val downloadUri = task.result
                 uploadToFireStore(downloadUri.toString())
-
-                Log.e("resultttt", downloadUri.toString())
-                Log.e("resultttt", downloadUri?.path)
-            } else {
             }
         })
     }
 
     private fun uploadToFireStore(mediaValue: String) {
+        val listParentContent = mutableListOf<ParentContentJava>()
+        if (isUploadImage)
+            listParentContent.add(ParentContentJava("",mediaValue))
+        else
+        listParentContent.add(ParentContentJava(et_title.text.toString(),mediaValue))
+
         val containerType = if (isUploadImage) "image" else "vr-image"
+
         val feed = Feed(et_caption.text.toString(),
-            profile?.photo, profile?.name, containerType, mediaValue, et_title.text.toString(), et_price.text.toString(), profile?.CompanyID)
+            listParentContent,
+            profile?.photo, profile?.name, containerType, mediaValue, et_price.text.toString(), profile?.CompanyID)
 
         db.collection("feed")
             .document(UUID.randomUUID().toString())

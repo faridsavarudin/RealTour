@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/size_21"
-    android:paddingBottom="34dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="34dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/rel_profile"
-        android:layout_marginBottom="@dimen/size_13"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_13">
 
         <RelativeLayout
             android:id="@+id/rel_iv_profile"
@@ -41,79 +41,95 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
     <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_width="match_parent"
         android:id="@+id/iv_image"
-        app:riv_border_color="@color/gray"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        app:riv_border_width="0.5dp"
-        app:riv_corner_radius="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/rel_profile"
-        android:layout_height="wrap_content"/>
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:riv_border_color="@color/gray"
+        app:riv_border_width="0.5dp"
+        app:riv_corner_radius="6dp" />
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        app:cardCornerRadius="6dp"
-        android:layout_height="wrap_content">
+        android:id="@+id/rel_vr"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="6dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="450dp">
 
+            <com.google.vr.sdk.widgets.pano.VrPanoramaView
+                android:id="@+id/vr_panorama"
+                android:paddingLeft="@dimen/size_13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-    <com.google.vr.sdk.widgets.pano.VrPanoramaView
-        android:layout_width="match_parent"
-        android:id="@+id/vr_panorama"
-        android:layout_height="450dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_vr_image"
+                android:paddingLeft="@dimen/size_13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_height="30dp"
+                android:id="@+id/iv_fullscreen"
+                android:layout_margin="@dimen/size_13"
+                android:src="@drawable/ic_scale_screen"/>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/rel_ar"
-        android:background="@drawable/bg_border_white"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_border_white">
+
         <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="match_parent"
             android:id="@+id/iv_ar"
-            app:riv_border_color="@color/gray"
-            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:riv_border_color="@color/gray"
             app:riv_border_width="0.5dp"
-            app:riv_corner_radius="6dp"
-            android:layout_height="wrap_content"/>
+            app:riv_corner_radius="6dp" />
 
         <TextView
-            android:layout_marginBottom="@dimen/size_21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Try AR"
-            android:paddingVertical="5dp"
             android:layout_margin="@dimen/size_13"
-            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/size_21"
+            android:background="@drawable/bg_border_white"
             android:paddingHorizontal="13dp"
-            android:background="@drawable/bg_border_white" />
+            android:paddingVertical="5dp"
+            android:text="Try AR"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_marginTop="9dp"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_title"/>
 
     <TextView
+        android:id="@+id/tv_price"
         android:layout_width="match_parent"
-        android:textSize="13sp"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_price"/>
+        android:textColor="@color/black"
+        android:textSize="13sp" />
+
     <TextView
+        android:id="@+id/tv_caption"
         android:layout_width="match_parent"
-        android:textSize="13sp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:textColor="@color/gray"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_caption"/>
+        android:textSize="13sp" />
 
 </LinearLayout>
