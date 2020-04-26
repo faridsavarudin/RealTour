@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/BottomNavigationViewStyle</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationViewStyle</item>
+    </style>
+
+    <style name="BottomNavigationViewStyle">
+        <item name="android:textSize">13sp</item>
+        <item name="fontPath">Poppins-Regular.ttf</item>
+        <item name="android:fontFeatureSettings">ss02</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+
+</resources>

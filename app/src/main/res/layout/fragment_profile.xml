@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:layout_height="250dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="55dp"
+            android:src="@color/gray"
+            app:riv_border_color="@color/gray"
+            app:riv_border_width="0.5dp"
+            app:riv_corner_radius="6dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="19sp"
+            android:gravity="center"
+            android:layout_marginTop="13dp"
+            android:text="Farid Savarudin"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="Farid Savarudin"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_email"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="19sp"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="Post"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recycler"
+        android:layout_marginHorizontal="11dp"
+        android:layout_height="400dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

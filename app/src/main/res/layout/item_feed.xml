@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size_21"
+    android:paddingBottom="34dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rel_profile"
+        android:layout_marginBottom="@dimen/size_13"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rel_iv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@color/gray"
+                app:riv_border_color="@color/gray"
+                app:riv_border_width="0.5dp"
+                app:riv_corner_radius="6dp" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@id/iv_profile"
+                android:text="test"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        android:id="@+id/iv_image"
+        app:riv_border_color="@color/gray"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        app:riv_border_width="0.5dp"
+        app:riv_corner_radius="6dp"
+        android:layout_below="@id/rel_profile"
+        android:layout_height="wrap_content"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="6dp"
+        android:layout_height="wrap_content">
+
+
+    <com.google.vr.sdk.widgets.pano.VrPanoramaView
+        android:layout_width="match_parent"
+        android:id="@+id/vr_panorama"
+        android:layout_height="450dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rel_ar"
+        android:background="@drawable/bg_border_white"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:id="@+id/iv_ar"
+            app:riv_border_color="@color/gray"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:riv_border_width="0.5dp"
+            app:riv_corner_radius="6dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginBottom="@dimen/size_21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Try AR"
+            android:paddingVertical="5dp"
+            android:layout_margin="@dimen/size_13"
+            android:textColor="@color/white"
+            android:paddingHorizontal="13dp"
+            android:background="@drawable/bg_border_white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="9dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_price"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="13sp"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/gray"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_caption"/>
+
+</LinearLayout>

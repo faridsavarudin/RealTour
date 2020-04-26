@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="bottom_navigation_icon_size" tools:override="true">32dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="size_21">21dp</dimen>
+    <dimen name="size_32">32dp</dimen>
+    <dimen name="font_very_very_large">19sp</dimen>
+    <dimen name="size_13">13dp</dimen>
+    <dimen name="small_12sp">12sp</dimen>
+
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_105">105dp</dimen>
+    <dimen name="standard_155">155dp</dimen>
+</resources>

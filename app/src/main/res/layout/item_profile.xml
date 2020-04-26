@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="200dp"
+    android:layout_marginHorizontal="11dp"
+    android:layout_marginTop="@dimen/size_21"
+    android:orientation="vertical">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        android:id="@+id/iv_image"
+        app:riv_border_color="@color/gray"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        app:riv_border_width="0.5dp"
+        app:riv_corner_radius="6dp"
+        android:layout_below="@id/rel_profile"
+        android:layout_height="wrap_content"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="6dp"
+        android:layout_height="wrap_content">
+
+
+    <com.google.vr.sdk.widgets.pano.VrPanoramaView
+        android:layout_width="match_parent"
+        android:id="@+id/vr_panorama"
+        android:layout_height="450dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rel_ar"
+        android:background="@drawable/bg_border_white"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:id="@+id/iv_ar"
+            app:riv_border_color="@color/gray"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:riv_border_width="0.5dp"
+            app:riv_corner_radius="6dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginBottom="@dimen/size_21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Try AR"
+            android:paddingVertical="5dp"
+            android:layout_margin="@dimen/size_13"
+            android:textColor="@color/white"
+            android:paddingHorizontal="13dp"
+            android:background="@drawable/bg_border_white" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"/>
+
+</LinearLayout>

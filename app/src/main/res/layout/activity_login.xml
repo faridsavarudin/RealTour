@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/white_transparent"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    tools:ignore="MissingPrefix"
+    tools:targetApi="lollipop">
+
+    <com.google.vr.sdk.widgets.pano.VrPanoramaView
+        android:id="@+id/pano_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R"
+        android:id="@+id/r_logo"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="70sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/realtour"
+        android:gravity="center"
+        android:layout_below="@id/r_logo"
+        android:textColor="@color/black"
+        android:textSize="34sp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="match_parent"
+        android:id="@+id/btn_signin"
+        android:paddingBottom="44dp"
+        android:layout_marginHorizontal="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_welcome_back"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/size_21"-->
+    <!--        android:layout_marginTop="@dimen/size_32"-->
+    <!--        android:text="@string/welcome_back"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="@dimen/font_very_very_large" />-->
+
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/lin_email"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/tv_welcome_back"-->
+    <!--        android:layout_marginTop="@dimen/size_13"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:paddingHorizontal="21dp">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:layout_marginTop="@dimen/size_21"-->
+    <!--            android:text="@string/email_or_username" />-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/edtEmailUser"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="34dp"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:background="@drawable/border_black"-->
+    <!--            android:hint="@string/insert_email_or_username"-->
+    <!--            android:inputType="textEmailAddress"-->
+    <!--            android:maxLines="1"-->
+    <!--            android:textCursorDrawable="@null"-->
+    <!--            android:paddingStart="13dp"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textColorHint="@color/gray"-->
+    <!--            android:textSize="@dimen/small_12sp" />-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/lin_password"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/lin_email"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:paddingHorizontal="21dp">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="@dimen/size_21"-->
+    <!--            android:text="@string/password"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="@dimen/small_12sp" />-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/edtPassword"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="34dp"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:background="@drawable/border_black"-->
+    <!--            android:hint="@string/insert_password"-->
+    <!--            android:inputType="textPassword"-->
+    <!--            android:maxLines="1"-->
+    <!--            android:paddingStart="13dp"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textCursorDrawable="@null"-->
+    <!--            android:textColorHint="@color/gray"-->
+    <!--            android:textSize="@dimen/small_12sp" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_error_password"-->
+    <!--            fontPath="fonts/HelveticaNowRegular.otf"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:fontFeatureSettings="ss02"-->
+    <!--            android:letterSpacing="0.05"-->
+    <!--            android:text="@string/username_or_password_incorrect"-->
+    <!--            android:textColor="@color/red"-->
+    <!--            android:textSize="@dimen/small_12sp"-->
+    <!--            android:visibility="invisible" />-->
+    <!--    </LinearLayout>-->
+
+
+
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/btnLogin"-->
+    <!--        android:layout_width="54dp"-->
+    <!--        android:layout_height="54dp"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_margin="@dimen/size_21"-->
+    <!--        android:src="@drawable/button_next" />-->
+
+    <!--    <ProgressBar-->
+    <!--        android:id="@+id/progress_bar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:indeterminate="true"-->
+    <!--        android:visibility="gone" />-->
+
+
+</RelativeLayout>

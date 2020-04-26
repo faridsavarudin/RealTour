@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "416589067348",
+    "firebase_url": "https://realtourandroid.firebaseio.com",
+    "project_id": "realtourandroid",
+    "storage_bucket": "realtourandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416589067348:android:d918fbff56ca6e4a5529c1",
+        "android_client_info": {
+          "package_name": "id.dsc.realtour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416589067348-vq7m0amc5dc4659vi0oeunvh0fm7cs8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.dsc.realtour",
+            "certificate_hash": "edb7fba393eb4b4f0e31063695a01cd8ae21e855"
+          }
+        },
+        {
+          "client_id": "416589067348-po3ri1fkaesgf646u3dctbktbllmqqqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAce5D7079PCUpv0N2Oaqidc8pfhRc_TXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416589067348-po3ri1fkaesgf646u3dctbktbllmqqqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
