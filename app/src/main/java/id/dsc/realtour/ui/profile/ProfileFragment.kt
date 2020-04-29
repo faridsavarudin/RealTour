@@ -1,12 +1,11 @@
 package id.dsc.realtour.ui.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.orhanobut.hawk.Hawk
@@ -51,11 +50,20 @@ class ProfileFragment : Fragment() {
                 }
                 adapter = ProfileAdapter(context, listFeeds)
                 recycler?.also {
+                    progress.visibility=View.GONE
                     it.layoutManager= GridLayoutManager(context, 2)
+                    it.isNestedScrollingEnabled= false
                     it.setHasFixedSize(true)
-                    it.isNestedScrollingEnabled = true
                     it.adapter = adapter
                 }
             }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 }

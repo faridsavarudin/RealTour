@@ -17,6 +17,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.vr.sdk.widgets.pano.VrPanoramaView
 import id.dsc.realtour.R
 import id.dsc.realtour.data.model.Feed
+import id.dsc.realtour.ui.ar.ARActivity
 import id.dsc.realtour.ui.vr.VRFullScreenActivity
 import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.item_feed.view.*
@@ -35,6 +36,10 @@ RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
                 Glide.with(context).load(data.companyLogo).into(iv_profile)
                 tv_username.text = data.companyName
                 tv_caption.text = data.caption
+                tv_try_ar.setOnClickListener {
+                    context.startActivity(Intent(context, ARActivity::class.java)
+                        .also { intent: Intent -> intent.putExtra("feed", data) })
+                }
 
                 //price
                 if (data.price!=null){
@@ -45,9 +50,9 @@ RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
                 }
 
                 if (data.containerType=="image"){
-                    iv_image.visibility = View.VISIBLE
+                    card_image.visibility = View.VISIBLE
                     rel_vr.visibility = View.GONE
-                    rel_ar.visibility = View.GONE
+                    card_ar.visibility = View.GONE
                     Glide.with(context).asBitmap().load(data.mediaValue)
                         .into(object :CustomTarget<Bitmap>(){
                             override fun onLoadCleared(placeholder: Drawable?) {
@@ -64,15 +69,14 @@ RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
                         })
                 }
                 if (data.containerType=="ar-object"){
-                    iv_image.visibility = View.GONE
+                    card_image.visibility = View.GONE
                     rel_vr.visibility = View.GONE
-                    rel_ar.visibility = View.VISIBLE
+                    card_ar.visibility = View.VISIBLE
                     Glide.with(context).asBitmap().load(data.mediaValue)
                         .into(object :CustomTarget<Bitmap>(){
                             override fun onLoadCleared(placeholder: Drawable?) {
 
                             }
-
                             override fun onResourceReady(
                                 resource: Bitmap,
                                 transition: Transition<in Bitmap>?
@@ -86,9 +90,9 @@ RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
                     val loadVRImage = VRImageLoader(context)
                     loadVRImage.loadVR(data.parentContent, vr_panorama,
                         rvVR = rv_vr_image)
-                    iv_image.visibility = View.GONE
+                    card_image.visibility = View.GONE
                     rel_vr.visibility = View.VISIBLE
-                    rel_ar.visibility = View.GONE
+                    card_ar.visibility = View.GONE
                     iv_fullscreen.setOnClickListener {
                         val intent = Intent(context, VRFullScreenActivity::class.java)
                         intent.putExtra("data", data)

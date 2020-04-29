@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "id.dsc.realtour"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -52,15 +52,11 @@ dependencies {
     implementation 'io.github.inflationx:viewpump:2.0.3'
     // vr
     implementation "com.google.vr:sdk-panowidget:$vrVersion"
-    implementation "com.google.code.gson:gson:2.8.0"
     //permission
-    implementation 'com.karumi:dexter:5.0.0'
     implementation 'com.github.dhaval2404:imagepicker:1.7.1'
     implementation 'com.github.yalantis:ucrop:2.2.4'
 
-    implementation "com.google.ar:core:$arVersion"
     implementation "com.google.ar.sceneform:assets:$arVersion"
-    implementation "com.google.ar.sceneform:animation:$arVersion"
     implementation "com.google.ar.sceneform.ux:sceneform-ux:$arVersion"
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
@@ -68,8 +64,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:$glideVersion") {
         exclude group: "androidx"
     }
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
-
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
@@ -88,3 +84,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+apply plugin: 'com.google.ar.sceneform.plugin'

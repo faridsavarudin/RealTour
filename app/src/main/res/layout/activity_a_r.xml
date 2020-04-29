@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ar.ARActivity">
+
+    <fragment
+        android:id="@+id/sceneform_fragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_tap_to_place"
+        android:text="Tap to place"
+        android:enabled="false"
+        android:layout_alignParentBottom="true"
+        android:paddingHorizontal="10dp"
+        android:layout_margin="34dp"
+        android:paddingVertical="7dp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_border_button_gray_disabled"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

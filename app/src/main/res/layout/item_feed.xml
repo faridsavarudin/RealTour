@@ -42,16 +42,20 @@
 
     </RelativeLayout>
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card_image"
+        app:cardCornerRadius="6dp">
+    <com.alexvasilkov.gestures.views.GestureImageView
         android:id="@+id/iv_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rel_profile"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:riv_border_color="@color/gray"
-        app:riv_border_width="0.5dp"
-        app:riv_corner_radius="6dp" />
+        app:riv_border_color="@color/gray" />
+    </androidx.cardview.widget.CardView>
 
 
     <androidx.cardview.widget.CardView
@@ -86,13 +90,20 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card_ar"
+        app:cardCornerRadius="6dp">
+
+
     <RelativeLayout
         android:id="@+id/rel_ar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_border_white">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.alexvasilkov.gestures.views.GestureImageView
             android:id="@+id/iv_ar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,20 +120,24 @@
             android:layout_margin="@dimen/size_13"
             android:layout_marginBottom="@dimen/size_21"
             android:background="@drawable/bg_border_white"
-            android:paddingHorizontal="13dp"
+            android:paddingHorizontal="7dp"
+            android:id="@+id/tv_try_ar"
             android:paddingVertical="5dp"
             android:text="Try AR"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorPrimary" />
 
     </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_13"
         android:textColor="@color/black"
-        android:textSize="13sp" />
+        android:textStyle="bold"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tv_caption"

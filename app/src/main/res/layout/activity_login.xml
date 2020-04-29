@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:text="@string/realtour"
         android:gravity="center"
+        android:visibility="gone"
         android:layout_below="@id/r_logo"
         android:textColor="@color/black"
         android:textSize="34sp" />
