@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -99,10 +98,10 @@ class HomeFragment : Fragment() {
 
     private fun showFABMenu() {
         isFABOpen = true
-        lin_fab1.animate().translationY(-resources.getDimension(R.dimen.standard_55))
+        lin_fab1.animate().translationY(-resources.getDimension(R.dimen.standard_65))
         lin_fab1.visibility=View.VISIBLE
         lin_fab2.visibility=View.VISIBLE
-        lin_fab2.animate().translationY(-resources.getDimension(R.dimen.standard_105))
+        lin_fab2.animate().translationY(-resources.getDimension(R.dimen.standard_115))
     }
 
     private fun closeFABMenu() {
