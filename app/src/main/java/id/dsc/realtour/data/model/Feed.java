@@ -14,12 +14,13 @@ public class Feed implements Parcelable {
     private String containerType;
     private String mediaValue;
     private String price;
+    private String title;
     private String companyID;
 
 
 
     public Feed(String caption, List<id.dsc.realtour.data.model.ParentContentJava> ParentContent,
-                String companyLogo, String companyName, String containerType, String mediaValue, String price, String companyID) {
+                String companyLogo, String companyName, String containerType, String mediaValue, String price, String companyID, String title) {
         this.caption = caption;
         this.parentContent = ParentContent;
         this.companyLogo = companyLogo;
@@ -28,6 +29,7 @@ public class Feed implements Parcelable {
         this.mediaValue = mediaValue;
         this.price = price;
         this.companyID = companyID;
+        this.title = title;
     }
 
     public Feed() {
@@ -41,6 +43,7 @@ public class Feed implements Parcelable {
         mediaValue = in.readString();
         price = in.readString();
         companyID = in.readString();
+        title = in.readString();
         parentContent = in.createTypedArrayList(ParentContentJava.CREATOR);
     }
 
@@ -53,6 +56,7 @@ public class Feed implements Parcelable {
         dest.writeString(mediaValue);
         dest.writeString(price);
         dest.writeString(companyID);
+        dest.writeString(title);
         dest.writeTypedList(parentContent);
     }
 
@@ -79,6 +83,14 @@ public class Feed implements Parcelable {
 
     public void setParentContent(List<id.dsc.realtour.data.model.ParentContentJava> parentContent) {
         this.parentContent = parentContent;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCaption() {

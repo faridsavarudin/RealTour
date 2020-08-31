@@ -23,6 +23,7 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
+                android:visibility="gone"
                 android:src="@color/gray"
                 app:riv_border_color="@color/gray"
                 app:riv_border_width="0.5dp"
@@ -119,7 +120,7 @@
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/size_13"
             android:layout_marginBottom="@dimen/size_21"
-            android:background="@drawable/bg_border_white"
+            android:background="@drawable/bg_border_gray"
             android:paddingHorizontal="7dp"
             android:id="@+id/tv_try_ar"
             android:paddingVertical="5dp"
@@ -131,10 +132,18 @@
 
 
     <TextView
-        android:id="@+id/tv_price"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_13"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="15sp" />

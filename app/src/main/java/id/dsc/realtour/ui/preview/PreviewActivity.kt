@@ -5,11 +5,14 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.gaharitechnology.Ars.util.UrlUtils
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -20,7 +23,6 @@ import id.dsc.realtour.MainActivity
 import id.dsc.realtour.R
 import id.dsc.realtour.data.model.Company
 import id.dsc.realtour.data.model.Feed
-import id.dsc.realtour.data.model.ParentContent
 import id.dsc.realtour.data.model.ParentContentJava
 import id.dsc.realtour.ui.BaseActivity
 import id.dsc.realtour.ui.home.HomeFragment
@@ -32,12 +34,13 @@ import java.util.*
 class PreviewActivity : BaseActivity() {
 
     val data by lazy { intent.getStringExtra(HomeFragment.DATA) }
-    val isUploadImage by lazy { intent.getBooleanExtra(HomeFragment.UPLOAD_IMAGE, false) }
+    val isUploadAR by lazy { intent.getBooleanExtra(HomeFragment.UPLOAD_AR, false) }
     private var panoOptions: VrPanoramaView.Options? = null
     var db = FirebaseFirestore.getInstance()
     val storage = FirebaseStorage.getInstance()
     var storageRef = storage.reference
     private lateinit var filePath: Uri
+    var find = false
     val profile by lazy { Hawk.get<Company>(Cons.MyProfile) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +48,9 @@ class PreviewActivity : BaseActivity() {
         setContentView(R.layout.activity_preview)
         filePath = Uri.parse(data)
 
-        if (isUploadImage) {
-            et_title.visibility=View.GONE
+        if (isUploadAR) {
+            et_object_3d.visibility=View.VISIBLE
+            //et_title.visibility=View.GONE
             iv_preview.setImageURI(filePath)
         } else {
             iv_preview.visibility = View.GONE
@@ -79,6 +83,27 @@ class PreviewActivity : BaseActivity() {
             progress.visibility = View.VISIBLE
             uploadFile()
         }
+
+        et_object_3d.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                for (link in UrlUtils.alphabet) {
+                    if (et_object_3d.text.toString().contains(link)) {
+                        find = true
+                        return
+                    }else{
+                        find= false
+                    }
+                }
+            }
+
+        })
     }
 
     private fun uploadFile() {
@@ -100,16 +125,16 @@ class PreviewActivity : BaseActivity() {
 
     private fun uploadToFireStore(mediaValue: String) {
         val listParentContent = mutableListOf<ParentContentJava>()
-        if (isUploadImage)
-            listParentContent.add(ParentContentJava("",mediaValue))
+        if (isUploadAR)
+            listParentContent.add(ParentContentJava(et_title.text.toString(),et_object_3d.text.toString()))
         else
         listParentContent.add(ParentContentJava(et_title.text.toString(),mediaValue))
 
-        val containerType = if (isUploadImage) "image" else "vr-image"
+        val containerType = if (isUploadAR) "ar-object" else "vr-image"
 
         val feed = Feed(et_caption.text.toString(),
             listParentContent,
-            profile?.photo, profile?.name, containerType, mediaValue, et_price.text.toString(), profile?.CompanyID)
+            profile?.photo, profile?.email, containerType, mediaValue, et_price.text.toString(), profile?.CompanyID, et_title.text.toString())
 
         db.collection("feed")
             .document(UUID.randomUUID().toString())

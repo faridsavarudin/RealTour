@@ -50,8 +50,46 @@ class LoginActivity : BaseActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         btn_signin.setOnClickListener {
-            val signInIntent: Intent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, 101)
+            if (et_email.text.toString().isNotEmpty() && et_password.text.toString().isNotEmpty()) {
+                mAuth.signInWithEmailAndPassword(
+                    et_email.text.toString(),
+                    et_password.text.toString()
+                )
+                    .addOnCompleteListener(
+                        this
+                    ) { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "signInWithCredential:success")
+                            val user = mAuth.currentUser
+                            val company = Company(
+                                user?.uid,
+                                user?.displayName,
+                                user?.email,
+                                user?.photoUrl.toString()
+                            )
+                            Log.d(TAG, "firebaseAuthWithGooglee:" + user?.uid)
+                            Hawk.put(Cons.MyProfile, company)
+                            onLoggedIn()
+                        } else {
+                            Toast.makeText(this, "Authentication Failed.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+            }else {
+                Toast.makeText(this, "Mohon masukan email atau password anda", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        tv_as_guest.setOnClickListener {
+            val company = Company(
+                "cc",
+                "guest",
+                "",
+                "")
+            Hawk.put(Cons.MyProfile, company)
+            val intent = Intent(this, Main2Activity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -64,7 +102,7 @@ class LoginActivity : BaseActivity() {
         panoOptions = VrPanoramaView.Options()
         panoOptions!!.inputType = VrPanoramaView.Options.TYPE_MONO
         glide.asBitmap()
-            .load(R.drawable.building)
+            .load(R.drawable.welcome_screen)
             .into(object : CustomTarget<Bitmap>() {
                 override fun onLoadFailed(errorDrawable: Drawable?) {
 
@@ -87,48 +125,16 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun onLoggedIn(){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-
-    }
-    ////
-//
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 101) {
-            when (requestCode) {
-                101 -> try {
-                    val task =
-                        GoogleSignIn.getSignedInAccountFromIntent(data)
-                    val account =
-                        task.getResult(ApiException::class.java)
-                    firebaseAuthWithGoogle(account)
-                } catch (e: ApiException) { // The ApiException status code indicates the detailed failure reason.
-                    Log.w("LoginActivity", "signInResult:failed code=" + e.statusCode)
-                }
+        Hawk.get<Company>(Cons.MyProfile)?.let {
+            if (it.name.equals("guest")){
+                val intent = Intent(this, Main2Activity::class.java)
+                startActivity(intent)
+                finish()
+            }else {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
-    }
-
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id)
-
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(
-                this
-            ) { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithCredential:success")
-                    val user = mAuth.currentUser
-                    val company =Company(acct.id, user?.displayName,user?.email, user?.photoUrl.toString())
-                    Log.d(TAG, "firebaseAuthWithGooglee:" + user?.uid)
-                    Hawk.put(Cons.MyProfile, company)
-                    onLoggedIn()
-                } else {
-                    Toast.makeText(this, "Authentication Failed.", Toast.LENGTH_SHORT).show()
-                }
-            }
     }
 }

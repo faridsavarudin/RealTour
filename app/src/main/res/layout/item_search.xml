@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size_21"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_13">
+
+        <RelativeLayout
+            android:id="@+id/rel_iv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@color/gray"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@id/iv_profile"
+                android:text="test"
+                android:layout_toLeftOf="@id/tv_try_ar"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_border_gray"
+                android:id="@+id/tv_try_ar"
+                android:padding="5dp"
+                android:layout_marginRight="@dimen/size_13"
+                android:layout_centerVertical="true"
+                android:text="Try AR"
+                android:textColor="@color/colorPrimary" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

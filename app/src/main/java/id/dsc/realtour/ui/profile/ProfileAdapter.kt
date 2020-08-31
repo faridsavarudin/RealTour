@@ -1,6 +1,7 @@
 package id.dsc.realtour.ui.profile
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.util.Log
@@ -16,6 +17,8 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.vr.sdk.widgets.pano.VrPanoramaView
 import id.dsc.realtour.R
 import id.dsc.realtour.data.model.Feed
+import id.dsc.realtour.ui.ar.ARActivity
+import id.dsc.realtour.ui.vr.VRFullScreenActivity
 import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.item_profile.view.*
 
@@ -31,6 +34,7 @@ RecyclerView.Adapter<ProfileAdapter.MyViewHolder>(){
     inner class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(data: Feed) {
             view.apply {
+                tv_title.text = data.title
                 if (data.containerType=="image"){
                     iv_image.visibility = View.VISIBLE
                     vr_panorama.visibility = View.GONE
@@ -96,6 +100,18 @@ RecyclerView.Adapter<ProfileAdapter.MyViewHolder>(){
                             }
 
                         })
+                }
+
+                itemView.setOnClickListener {
+                    val intent = Intent(context, VRFullScreenActivity::class.java)
+                    intent.putExtra("data", data)
+                    context.startActivity(intent)
+                }
+
+                rel_ar.setOnClickListener {
+                    context.startActivity(
+                        Intent(context, ARActivity::class.java)
+                            .also { intent: Intent -> intent.putExtra("feed", data) })
                 }
 
             }

@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.orhanobut.hawk.Hawk
 import id.dsc.realtour.R
+import id.dsc.realtour.data.model.Company
 import id.dsc.realtour.data.model.Feed
 import id.dsc.realtour.ui.preview.PreviewActivity
+import id.dsc.realtour.utils.Cons
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -27,11 +30,12 @@ class HomeFragment : Fragment() {
     var storageRef = storage.reference
     private lateinit var filePath: Uri
     var adapter : HomeAdapter?=null
+    val profile by lazy { Hawk.get<Company>(Cons.MyProfile) }
     var isFABOpen=false
     var uploadImage = true
     companion object{
         const val DATA ="data"
-        const val UPLOAD_IMAGE = "upload_image"
+        const val UPLOAD_AR = "upload_image"
     }
 
     override fun onCreateView(
@@ -43,6 +47,8 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        if (profile.name.equals("guest"))
+            fab.visibility=View.GONE
         initView()
         initFireStore()
     }
@@ -117,7 +123,7 @@ class HomeFragment : Fragment() {
             filePath = data?.data!!
             val intent = Intent(context, PreviewActivity::class.java)
             intent.putExtra(DATA, filePath.toString())
-            intent.putExtra(UPLOAD_IMAGE, uploadImage)
+            intent.putExtra(UPLOAD_AR, uploadImage)
             startActivity(intent)
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()

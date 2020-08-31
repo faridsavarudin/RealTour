@@ -19,33 +19,66 @@
         />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="R"
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo"
         android:id="@+id/r_logo"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="70sp"
-        android:textStyle="bold"/>
-    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:gravity="center" />
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/realtour"
-        android:gravity="center"
-        android:visibility="gone"
-        android:layout_below="@id/r_logo"
-        android:textColor="@color/black"
-        android:textSize="34sp" />
-
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="match_parent"
-        android:id="@+id/btn_signin"
-        android:paddingBottom="44dp"
         android:layout_marginHorizontal="34dp"
+        android:layout_marginBottom="64dp"
         android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:hint="Email"
+            android:id="@+id/et_email"
+            android:paddingLeft="13dp"
+            android:background="@color/white"
+            android:textColorHint="@color/gray"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:hint="Password"
+            android:paddingLeft="13dp"
+            android:textColorHint="@color/gray"
+            android:layout_marginTop="13dp"
+            android:background="@color/white"
+            android:id="@+id/et_password"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="#3150FB"
+            android:text="Sign in"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginTop="34dp"
+            android:id="@+id/btn_signin"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Sign in as guest"
+            android:textColor="#3150FB"
+            android:textSize="15sp"
+            android:id="@+id/tv_as_guest"
+            android:layout_marginTop="64dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
     <!--    <TextView-->
     <!--        android:id="@+id/tv_welcome_back"-->
     <!--        android:layout_width="wrap_content"-->

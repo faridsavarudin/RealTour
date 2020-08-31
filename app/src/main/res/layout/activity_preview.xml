@@ -41,6 +41,18 @@
 
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_object_3d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:hint="Link Object 3D"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:met_baseColor="@color/colorPrimaryDark"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/et_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -12,7 +12,7 @@
     <string name="insert_email_or_username">Insert email or username</string>
     <string name="username_or_password_incorrect">Username or Password Incorrect</string>
     <string name="realtour">RealTour</string>
-    <string name="upload_photo">Upload Photo</string>
+    <string name="upload_photo">Upload AR</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

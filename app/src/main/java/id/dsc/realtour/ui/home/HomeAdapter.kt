@@ -36,6 +36,7 @@ RecyclerView.Adapter<HomeAdapter.MyViewHolder>(){
                 Glide.with(context).load(data.companyLogo).into(iv_profile)
                 tv_username.text = data.companyName
                 tv_caption.text = data.caption
+                tv_title.text = data.title
                 tv_try_ar.setOnClickListener {
                     context.startActivity(Intent(context, ARActivity::class.java)
                         .also { intent: Intent -> intent.putExtra("feed", data) })

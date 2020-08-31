@@ -57,9 +57,9 @@
             android:text="Try AR"
             android:paddingVertical="5dp"
             android:layout_margin="@dimen/size_13"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimary"
             android:paddingHorizontal="13dp"
-            android:background="@drawable/bg_border_white" />
+            android:background="@drawable/bg_border_gray" />
 
     </RelativeLayout>
 

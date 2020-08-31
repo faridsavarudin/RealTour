@@ -16,10 +16,4 @@
         android:name="id.dsc.realtour.ui.search.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="id.dsc.realtour.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
 </navigation>

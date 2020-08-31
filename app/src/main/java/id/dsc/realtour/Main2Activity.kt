@@ -14,16 +14,16 @@ import com.orhanobut.hawk.Hawk
 import id.dsc.realtour.ui.BaseActivity
 import id.dsc.realtour.utils.Cons
 
-class MainActivity : BaseActivity() {
+class Main2Activity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_second)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment_second)
         val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home,R.id.navigation_search, R.id.navigation_notifications))
+                R.id.navigation_home, R.id.navigation_notifications))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -41,9 +41,9 @@ class MainActivity : BaseActivity() {
                 FirebaseAuth.getInstance().signOut()
                 Hawk.delete(Cons.MyProfile)
                 startActivity(Intent(this, LoginActivity::class.java))
-                    .also { intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)}
+                    .also { intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)}
                 true
             }
 
